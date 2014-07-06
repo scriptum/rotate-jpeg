@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ANGLE=$(zenity --list --column=Angle 90 180 270 --height=250)
+
+for i in "$@"
+do
+	mv "$i" "$i".bak
+	jpegtran -rotate $ANGLE "$i".bak > "$i"
+done
